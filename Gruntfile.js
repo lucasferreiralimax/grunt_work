@@ -7,6 +7,21 @@ module.exports = function(grunt) {
         src: ['dist']
       },
     },
+    babel: {
+      options: {
+        sourceMap: false,
+        presets: ['@babel/preset-env']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'src',
+          src: ['**/*.js'],
+          dest: 'dist',
+          ext: '.js'
+        }]
+      }
+    },
     pug: {
       compile: {
         options: {
@@ -54,10 +69,11 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.registerTask('default', ['clean', 'pug', 'stylus', 'includeSource']);
+  grunt.registerTask('default', ['clean', 'babel', 'pug', 'stylus', 'includeSource']);
 
 };

@@ -1,0 +1,19 @@
+{
+  "name": "grunt_work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "example_user",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-pug": "^2.0.0",
+    "grunt-contrib-stylus": "^1.2.0",
+    "grunt-include-source": "^1.1.0",
+    "load-grunt-tasks": "^5.1.0"
+  }
+}

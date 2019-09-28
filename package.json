@@ -27,8 +27,10 @@
     "grunt": "^1.0.4",
     "grunt-babel": "^8.0.0",
     "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-connect": "^2.1.0",
     "grunt-contrib-pug": "^2.0.0",
     "grunt-contrib-stylus": "^1.2.0",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-include-source": "^1.1.0",
     "load-grunt-tasks": "^5.1.0"
   }

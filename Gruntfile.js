@@ -7,6 +7,25 @@ module.exports = function(grunt) {
         src: ['dist']
       },
     },
+    watch: {
+      build: {
+        options: {
+          livereload: true
+        },
+        files: ['src/**/*.js', 'src/**/*.pug', 'src/**/*.styl'],
+        tasks: ['clean', 'babel', 'pug', 'stylus', 'includeSource']
+      }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 4000,
+          base: 'dist',
+          hostname: '*',
+          livereload: true
+        }
+      }
+    },
     babel: {
       options: {
         sourceMap: false,
@@ -78,6 +97,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.registerTask('default', ['clean', 'babel', 'pug', 'stylus', 'includeSource']);
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.registerTask('default', ['clean', 'babel', 'pug', 'stylus', 'includeSource', 'connect', 'watch']);
 
 };

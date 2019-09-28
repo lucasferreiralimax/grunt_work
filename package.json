@@ -1,13 +1,26 @@
 {
   "name": "grunt_work",
   "version": "1.0.0",
-  "description": "",
+  "description": "Iniciando com Grunt em seu workflow",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "grunt"
   },
-  "author": "example_user",
-  "license": "ISC",
+  "author": "lucasferreiralimax",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasferreiralimax/grunt_work.git"
+  },
+  "keywords": [
+    "build",
+    "grunt",
+    "javascript",
+    "workflow"
+  ],
+  "bugs": {
+    "url": "https://github.com/lucasferreiralimax/grunt_work/issues"
+  },
+  "homepage": "https://github.com/lucasferreiralimax/grunt_work#readme",
   "devDependencies": {
     "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",

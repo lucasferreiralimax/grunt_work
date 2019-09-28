@@ -62,9 +62,13 @@ module.exports = function(grunt) {
         }
       },
       myTarget: {
-        files: {
-          'dist/index.html': 'dist/index.html'
-        }
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: ['**/*.html'],
+          dest: 'dist',
+          ext: '.html'
+        }]
       }
     }
   });

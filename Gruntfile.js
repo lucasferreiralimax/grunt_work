@@ -57,6 +57,17 @@ module.exports = function(grunt) {
         }]
       }
     },
+    uglify: {
+      myTarget: {
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: ['**/*.js'],
+          dest: 'dist',
+          ext: '.js'
+        }]
+      }
+    },
     pug: {
       dev: {
         options: {
@@ -109,13 +120,14 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-babel');
-  grunt.loadNpmTasks('grunt-contrib-stylus');
-  grunt.loadNpmTasks('grunt-contrib-pug');
-  grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-pug');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('prod', ['clean', 'babel', 'pug:prod', 'stylus:prod', 'includeSource']);
+  grunt.loadNpmTasks('grunt-include-source');
+  grunt.registerTask('prod', ['clean', 'babel', 'uglify', 'pug:prod', 'stylus:prod', 'includeSource']);
   grunt.registerTask('default', ['clean', 'babel', 'pug:dev', 'stylus:dev', 'includeSource', 'connect', 'watch']);
 
 };

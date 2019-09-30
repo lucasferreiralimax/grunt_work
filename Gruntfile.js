@@ -1,5 +1,21 @@
 module.exports = function(grunt) {
 
+  var pugFiles = [{
+    expand: true,
+    cwd: 'src',
+    src: ['**/*.pug', '!**/[_]*.pug'],
+    dest: 'dist',
+    ext: '.html'
+  }];
+
+  var stylusFiles = [{
+    expand: true,
+    cwd: 'src',
+    src: ['**/*.styl', '!**/[_]*.styl'],
+    dest: 'dist',
+    ext: '.css'
+  }];
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
@@ -19,7 +35,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          port: 4000,
+          port: 3000,
           base: 'dist',
           hostname: '*',
           livereload: true
@@ -42,31 +58,31 @@ module.exports = function(grunt) {
       }
     },
     pug: {
-      compile: {
+      dev: {
         options: {
           pretty: true
         },
-        files: [{
-          expand: true,
-          cwd: 'src',
-          src: ['**/*.pug', '!**/[_]*.pug'],
-          dest: 'dist',
-          ext: '.html'
-        }]
+        files: pugFiles
+      },
+      prod: {
+        options: {
+          pretty: false
+        },
+        files: pugFiles
       }
     },
     stylus: {
-      compile: {
+      dev: {
         options: {
           compress: false
         },
-        files: [{
-          expand: true,
-          cwd: 'src',
-          src: ['**/*.styl', '!**/[_]*.styl'],
-          dest: 'dist',
-          ext: '.css'
-        }]
+        files: stylusFiles
+      },
+      prod: {
+        options: {
+          compress: true
+        },
+        files: stylusFiles
       }
     },
     includeSource: {
@@ -99,6 +115,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('default', ['clean', 'babel', 'pug', 'stylus', 'includeSource', 'connect', 'watch']);
+  grunt.registerTask('prod', ['clean', 'babel', 'pug:prod', 'stylus:prod', 'includeSource']);
+  grunt.registerTask('default', ['clean', 'babel', 'pug:dev', 'stylus:dev', 'includeSource', 'connect', 'watch']);
 
 };

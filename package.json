@@ -4,7 +4,9 @@
   "description": "Iniciando com Grunt em seu workflow",
   "main": "index.js",
   "scripts": {
-    "start": "grunt"
+    "start": "grunt",
+    "prod": "grunt prod",
+    "clean": "grunt clean"
   },
   "author": "lucasferreiralimax",
   "repository": {

@@ -16,7 +16,7 @@ Agora para desenvolver execute em seu terminal ou cmd
 
 > `npm run start` ou `grunt`
 
-O servidor local subiu na url `http://localhost:8000`
+O servidor local subiu na url `http://localhost:8080`
 
 ## Montando os arquivos minificado para produção
 Agora para minificar execute em seu terminal ou cmd

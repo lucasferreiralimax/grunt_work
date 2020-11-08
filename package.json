@@ -1,6 +1,6 @@
 {
   "name": "grunt_work",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Iniciando com Grunt em seu workflow",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "grunt-contrib-stylus": "^1.2.0",
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0",
+    "grunt-image": "^6.4.0",
     "grunt-include-source": "^1.1.0",
     "load-grunt-tasks": "^5.1.0"
   }

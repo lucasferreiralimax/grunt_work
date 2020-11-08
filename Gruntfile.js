@@ -16,6 +16,13 @@ module.exports = function(grunt) {
     ext: '.css'
   }];
 
+  var imagesFiles = [{
+    expand: true,
+    cwd: 'src/assets',
+    src: ['**/*.{png,jpg,gif,svg}'],
+    dest: 'dist/assets'
+  }];
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
@@ -28,8 +35,8 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         },
-        files: ['src/**/*.js', 'src/**/*.pug', 'src/**/*.styl'],
-        tasks: ['clean', 'babel', 'pug', 'stylus', 'includeSource']
+        files: ['src/**/*.js', 'src/**/*.pug', 'src/**/*.styl', '**/*.{png,jpg,gif,svg}'],
+        tasks: ['clean', 'babel', 'pug', 'stylus', 'image', 'includeSource']
       }
     },
     connect: {
@@ -97,6 +104,22 @@ module.exports = function(grunt) {
         files: stylusFiles
       }
     },
+    image: {
+      static: {
+        options: {
+          optipng: false,
+          pngquant: true,
+          zopflipng: true,
+          jpegRecompress: false,
+          mozjpeg: true,
+          gifsicle: true,
+          svgo: true
+        }
+      },
+      dynamic: {
+        files: imagesFiles
+      }
+    },
     includeSource: {
       options: {
         basePath: 'dist',
@@ -125,10 +148,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-image');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-include-source');
-  grunt.registerTask('prod', ['clean', 'babel', 'uglify', 'pug:prod', 'stylus:prod', 'includeSource']);
-  grunt.registerTask('default', ['clean', 'babel', 'pug:dev', 'stylus:dev', 'includeSource', 'connect', 'watch']);
+  grunt.registerTask('prod', ['clean', 'babel', 'uglify', 'pug:prod', 'stylus:prod', 'image', 'includeSource']);
+  grunt.registerTask('default', ['clean', 'babel', 'pug:dev', 'stylus:dev', 'image', 'includeSource', 'connect', 'watch']);
 
 };

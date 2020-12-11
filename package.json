@@ -8,7 +8,7 @@
     "prod": "grunt prod",
     "clean": "grunt clean"
   },
-  "author": "lucasferreiralimax",
+  "author": "lucasferreiralimax (https://github.com/lucasferreiralimax)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lucasferreiralimax/grunt_work.git"
